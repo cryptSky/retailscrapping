@@ -1,0 +1,48 @@
+﻿<div>
+    <div class="row">
+        <div class="col-md-3 col-sm-4">
+            <input type='text'
+                   placeholder='Type to search...'
+                   class="form-control"
+                   [ngModel]='val'
+                   (ngModelChange)='updateFilter($event)' />
+        </div>
+
+        <div class="col-md-3 col-sm-4">
+            <ss-multiselect-dropdown [options]="_myOptions" [texts]="_myTexts" (ngModelChange)="onColumnsChange($event)"
+                                     [settings]="_mySettings" [(ngModel)]="_selectedOptions"></ss-multiselect-dropdown>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ngx-datatable #productsTable
+                           class="material"
+                           [columns]="_columns"
+                           [rows]="_products"
+                           [columnMode]="'force'"
+                           [draggable]="true"
+                           [headerHeight]="30"
+                           [footerHeight]="30"
+                           [rowHeight]="'auto'"
+                           [scrollbarH]="true"
+                           [loadingIndicator]="_loadingIndicator"
+                           [externalPaging]="true"
+                           [limit]="60"
+                           [offset]="_currentPage"
+                           [count]="_count"
+                           (activate)='onProductClick($event)' 
+                           (page)='onPage($event)'>                
+                                   
+            </ngx-datatable>
+
+            <template let-row="row" #imgTmpl>
+                <div>
+                    <img src="{{row.imageUrl}}" width="150">
+                </div>
+            </template>
+
+        </div>
+    </div>
+</div>

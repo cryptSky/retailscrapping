@@ -1,0 +1,15 @@
+﻿.ngx-datatable {
+    margin-top: 10px;
+}
+
+.datatable-body-cell {
+    -webkit-user-select: auto;
+    -moz-user-select: all;
+    -ms-user-select: text;
+    -o-user-select: all;
+    user-select: all;
+}
+
+.datatable-body-row {
+    cursor: pointer;
+}

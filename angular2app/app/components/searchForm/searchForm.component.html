@@ -1,0 +1,62 @@
+﻿
+<form #myForm="ngForm" novalidate (ngSubmit)="scrape(myForm, myForm.value, myForm.valid)" class="form-vertical">
+
+    <div class="row">
+        <div class="col-md-2">
+            <label for="source">Select online store</label>
+            <select [(ngModel)]="filter.onlineStoreName" class="form-control" name="onlineStoreName" id="onlineStoreName">
+                <option *ngFor="let source of sources" [ngValue]="source.value">{{source.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" [(ngModel)]="filter.title" #title="ngModel" name="title" id="title" (focusout)="getCategories($event)" required>
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label for="brand">Brand</label>
+            <input class="form-control" type="text" [(ngModel)]="filter.brand" #brand="ngModel" name="brand" id="brand">
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label for="gender">Gender</label>
+            <input class="form-control" type="text" [(ngModel)]="filter.gender" #gender="ngModel" id="gender" name="gender">
+        </div>
+
+        <div class="col-md-2 form-group">
+            <label for="category">Category</label>
+            <input class="form-control" type="text" [(ngModel)]="filter.category" #category="ngModel" name="category" id="category">
+
+        </div>
+    </div>
+
+      
+    <div class="row form-group">
+        <div class="col-md-2">
+            <label for="priceLow">Price Now, $</label>
+        </div>
+        <div class="col-md-2">
+            <label for="discountLow">Discount, %</label>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-2 form-group">
+             
+                 <input class="form-control" type="number" [(ngModel)]="filter.priceLow" #priceLow="ngModel" name="priceLow" id="priceLow" min="0" placeholder="From" style="margin-bottom: 5px;">
+             
+                 <input class="form-control" type="number" [(ngModel)]="filter.priceHigh" #priceHigh="ngModel" name="priceHigh" id="priceHigh" min="0" placeholder="To" style="margin-top: 5px;">
+    
+         </div>
+        <div class="col-md-2 form-group">
+             
+                 <input class="form-control" type="number" [(ngModel)]="filter.discountLow" #discountLow="ngModel" name="discountLow" id="discountLow" min="0" max="100" placeholder="From" style="margin-bottom: 5px;">
+            
+                 <input class="form-control" type="number" [(ngModel)]="filter.discountHigh" #discountHigh="ngModel" name="discountHigh" id="discountHigh" min="0" placeholder="To" style="margin-top: 5px;">
+             
+         </div>
+        <div class="col-md-2 form-group">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+
+</form>
